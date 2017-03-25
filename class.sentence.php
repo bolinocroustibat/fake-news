@@ -124,7 +124,13 @@ class Sentence {
 		$sentence_string = str_replace(" que e", " qu'e", $sentence_string);	
 		$sentence_string = str_replace(" que i", " qu'i", $sentence_string);
 		$sentence_string = str_replace(" que u", " qu'u", $sentence_string);
-		$sentence_string = $this->frenchUcfirst($sentence_string);
+		if (substr($sentence_string, 0, 3) == "“"){ // if the first char is a double quote
+			$second_char = substr($sentence_string, 3, 1);
+			$second_char_caps = $this->frenchUcfirst($second_char);
+			$sentence_string = substr_replace($sentence_string,$second_char_caps, 3, 1); // replace the second char
+		} else{
+			$sentence_string = $this->frenchUcfirst($sentence_string);
+		}
 		return $sentence_string;
 	}
 	
