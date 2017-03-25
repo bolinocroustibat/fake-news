@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /cache/
+Disallow: test.html
+Disallow: ajax_generate_FR.html
+Disallow: ajax_generate_FR.php
