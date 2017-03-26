@@ -1,11 +1,14 @@
 ﻿<?php
 
-include("connex.php");
+include("class.googlesheet.php");
 include("class.person.php");
 include("class.word.php");
 include("class.sentence.php");
 
-$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+/* CREATION DE LA TABLE D'INDEX */
+include('googlesheet_url.php');
+$gsheet = new GoogleSheet($googleSheetUrl);
+$gid_table = $gsheet->getGidTable();
 
 /* CREATION DU PERSONNAGE */
 $person = new Person();

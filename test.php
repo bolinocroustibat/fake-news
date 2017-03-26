@@ -1,19 +1,54 @@
-<meta charset="UTF-8" />
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8" />
+</head>
 
-<title>Générateur de post-vérités</title>
+<body>
 
+<form action="test.php" method="get">
 
-<?php
+	<?php
+	include("class.googlesheet.php");
+	include("class.person.php");
+	include("class.word.php");
+	include("class.sentence.php");
+	if (isset($_GET['sentence_id'])) {
+		$sentence_min = $sentence_max = $_GET['sentence_id'];
+	}
+	else {
+		$sentence_min = 5;
+		$sentence_max = 67;
+	}
+	/* CREATION DE LA TABLE D'INDEX */
+	$gsheet = new GoogleSheet("https://docs.google.com/spreadsheets/d/1sVkvvJCLckEJslV4kS6io0Y9hGLELZnnJd87Kkejces/edit#gid=0");
+	$gid_table = $gsheet->getGidTable();
+	/* CREATION DU PERSONNAGE */
+	$person = new Person();
+	$person_array = $person->getPersonArray();
+	$person_pic_filename = $person->getPersonPicture();
+	/* CREATION DE LA RUMEUR  */
+	$sentence_obj = new Sentence($gid_table,"phrases",$person_array,$sentence_min,$sentence_max);
+	$sentence_id = $sentence_obj->getSentenceId();
+	$sentence_string = $sentence_obj->getSentenceString();
+	if (isset($_GET['refresh'])) { // Pour forcer le rafraîchissement du cache
+		$gsheet->BuildAllCache();
+	}
+	?>
+	
+	<hr/>
+	
+	<h3>Test de génération de rumeur de type ligne #<input type="number" name="sentence_id" value ="<?php echo $sentence_id ?>"/> :</h3>
+	<p><?php echo $sentence_string; ?><p/>
 
+	<input type="submit" value="re-tester avec cette ligne">
 
-		$sentence_string = "“les Françaises seront juges” aurait dit Jacques Cheminade à propos de ses emplois fictifs";
+</form>  
 
-		if (substr($sentence_string, 0, 3) == "“"){ // if the first char is a double quote
-			$second_char = substr($sentence_string, 3, 1);
-			$second_char_caps = ucfirst($second_char);
-			$sentence_string = substr_replace($sentence_string,$second_char_caps, 3, 1); // replace the second char
-		}
-		
-		echo $sentence_string;
+<form action="test.php" method="get">
+	<input type="submit" value="re-tester au hasard">
+</form>
 
-?>
+</body>
+
+</html>

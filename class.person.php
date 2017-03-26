@@ -20,6 +20,10 @@ class Person {
 		return $this->person_array[2];
 	}
 	
+	public function getPersonGenre() {
+		return $this->person_array[3];
+	}
+	
 	public function __construct() {
 		$this->person_array = $this->csv_choose_name_and_picture();
 	}

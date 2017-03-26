@@ -40,7 +40,7 @@ if(isset($_GET['hash']) && $_GET['hash']!='') { // Si on recoit un hash
 						history.pushState(sentence, sentence, hash+'.html'); // change l'URL dynamiquement
 						if ((typeof sentence !== 'undefined') && (typeof hash !== 'undefined')) { // si les variables existent
 							document.getElementById('ShareFacebook').href = 'http://www.facebook.com/sharer/sharer.php?u='+window.location.href; // met à jour le lien de partage Facebook
-							document.getElementById('ShareTwitter').href = 'http://twitter.com/?status='+sentence+' via adriencarpentier.com/post-verites'; // met à jour le lien de partage Twitter
+							document.getElementById('ShareTwitter').href = 'http://twitter.com/?status='+sentence+' adriencarpentier.com/post-verites/'+hash+'.html'; // met à jour le lien de partage Twitter
 						}
 					}
 				})
@@ -58,7 +58,7 @@ if(isset($_GET['hash']) && $_GET['hash']!='') { // Si on recoit un hash
 	</script>
 </head>
 
-<body<?php if(isset($sentence) && $sentence!='' && isset($picture) && $picture!=''){echo ' onload="read_data(\''.addslashes($sentence).'\',\''.addslashes($picture).'\')"';} ?>>
+<body<?php if(isset($sentence) && $sentence!='' && isset($picture) && $picture!=''){echo ' onload="read_data(\''.$sentence.'\',\''.addslashes($picture).'\')"';} ?>>
 
 	<script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -82,7 +82,7 @@ if(isset($_GET['hash']) && $_GET['hash']!='') { // Si on recoit un hash
 			<div class="site">adriencarpentier.com</div>
 		</div>
 		<div class="share-wrapper">
-			<a id="ShareFacebook" href="http://www.facebook.com/sharer/sharer.php<?php if(isset($hash) && $hash!=''){echo '?u='.$actual_link;}?>">Partager sur Facebook</a><a id="ShareTwitter" href="http://twitter.com/?status=<?php if(isset($sentence) && $sentence!=''){echo $sentence.', via adriencarpentier.com/post-verites';}?>">Partager sur Twitter</a>
+			<a id="ShareFacebook" href="http://www.facebook.com/sharer/sharer.php<?php if(isset($actual_link) && $actual_link!=''){echo '?u='.$actual_link;}?>">Partager sur Facebook</a><a id="ShareTwitter" href="http://twitter.com/?status=<?php if(isset($sentence) && $sentence!=''){echo $sentence.' adriencarpentier.com/post-verites/'.$hash.'.html';}?>">Partager sur Twitter</a>
 		</div>	
 
 	</div>
