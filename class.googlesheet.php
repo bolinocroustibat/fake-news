@@ -2,8 +2,8 @@
 
 class GoogleSheet {
 
-	public $sheet_url;
-	public $sheet_id;
+	private $sheet_url;
+	private $sheet_id;
 	private $gid_table;
 	
 	public function getSheetId() {
@@ -60,14 +60,6 @@ class GoogleSheet {
 				echo ("Fichier de cache <i>".$cache_filename."</i> mis à jour !<br/>");
 			}
 		}
-	}
-
-	public function CsvToArray($sheet_name) { // build multidimensional array
-		static $temp_table;
-		$cachefile = dirname(__FILE__)."/cache/csv_cache_".$sheet_name.".json";
-		$temp_table = json_decode(file_get_contents($cachefile) ); // ...on récupère les données à partir du fichier de cache
-		array_splice($temp_table,0,3); // enlève les 4 premières lignes du tableau
-		return $temp_table;
 	}
 	
 	public function CsvToArrayKeys($sheet_name) { // build 2-dimension array with keys

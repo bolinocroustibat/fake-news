@@ -20,8 +20,9 @@ if(isset($_GET['hash']) && $_GET['hash']!='') { // Si on recoit un hash
 ?>
 
 <head>
-<?php include("header.php"); ?>
-</head>
+
+	<?php include("header.php"); ?>
+
 	
 	<script>
 		function generate_data() { // si le bouton de génération a été cliqué
@@ -56,6 +57,7 @@ if(isset($_GET['hash']) && $_GET['hash']!='') { // Si on recoit un hash
 			$('.project').html(sentence);
 		}
 	</script>
+
 </head>
 
 <body<?php if(isset($sentence) && $sentence!='' && isset($picture) && $picture!=''){echo ' onload="read_data(\''.$sentence.'\',\''.addslashes($picture).'\')"';} ?>>
@@ -73,11 +75,11 @@ if(isset($_GET['hash']) && $_GET['hash']!='') { // Si on recoit un hash
 		
 	<div id="main-wrapper">
 
-		<h1>Le générateur de<div class="big_h1">post-vérités</div></h1>
+		<h1>Le générateur de<span class="big_h1">post-vérités</span></h1>
 
-		<input type="button" onClick="generate_data()" value="engendrer une rumeur">
+		<input type="button" onClick="generate_data()" value="engendrer une rumeur foireuse">
 		<div class="project-wrapper" style="visibility:hidden;">
-			<img class="image" />
+			<img class="image" src="" alt="" />
 			<div class="project"></div>
 			<div class="site">adriencarpentier.com</div>
 		</div>

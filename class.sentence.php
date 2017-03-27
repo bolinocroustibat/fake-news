@@ -98,6 +98,9 @@ class Sentence {
 		if ((strpos($sentence_string, ' il ') !== false) && (strpos($sentence_string, 'il s’agit') == false) && ($this->person_array[3] == "f")) { // si on trouve un pronom "il" dans la phrase et que la personne est féminin
 			$sentence_string = str_replace(" il ", " elle ", $sentence_string);
 		}
+		if ((strpos($sentence_string, ' l’intéressé ') !== false) && ($this->person_array[3] == "f")) {
+			$sentence_string = str_replace(" l’intéressé ", " l’intéressée ", $sentence_string);
+		}
 		$correction_array = array(
 		" à le " => " au ",
 		" à les " => " aux ",
@@ -112,29 +115,28 @@ class Sentence {
 		" de u" => " d’u",
 		" de A" => " d’A",
 		" de E" => " d’E",
-		" de I" => " d’I",	
-		" de de " => " de ",	
+		" de I" => " d’I",
+		" de de " => " de ",
 		" de des " => " des ",
 		" de le " => " du ",
-		" le la " => " la ",			
+		" le la " => " la ",
 		" de les " => " des ",
-		" le le " => " le ",			
-		" le les " => " les ",		
-		" un l’" => " un ",	
+		" le le " => " le ",
+		" le les " => " les ",
+		" un l’" => " un ",
 		" un la " => " une ",
-		" un le " => " un ",	
+		" un le " => " un ",
 		" un les " => " des ",
 		" son la " => " sa ",
-		" son le " => " son ",		
+		" son le " => " son ",
 		" son l’" => " son ",
-		" son les " => " ses ",	
-		" de le " => " du ",
+		" son les " => " ses ",
 		" que a" => " qu’a",
 		" que e" => " qu’e",
 		" que i" => " qu’i",
 		" que u" => " qu’u",
-		" que A" => " qu’A",			
-		" que E" => " qu’E",	
+		" que A" => " qu’A",
+		" que E" => " qu’E",
 		" que I" => " qu’I",
 		" que U" => " qu’U",
 		);

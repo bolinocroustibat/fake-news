@@ -11,9 +11,11 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="<?php echo($actual_link);?>" />
 <meta property="og:title" content='<?php if(isset($sentence) && $sentence!=''){echo addslashes($sentence);}else{echo 'Le générateur de post-vérités';} ?>' />
-<meta property="og:image" content='<?php if(isset($picture) && $picture!=''){echo 'http://www.adriencarpentier.com/post-verites/photos/'.$picture;}else{echo './style/background_1920x1080.jpg';} ?>' />
+<meta property="og:description" content='<?php if(isset($sentence) && $sentence!=''){echo addslashes($sentence);}else{echo 'Engendrez des rumeurs foireuses d’extrême-droite !';} ?>' />
+<meta property="og:image" content='<?php if(isset($picture) && $picture!=''){echo 'http://www.adriencarpentier.com/post-verites/photos/'.$picture;}else{echo 'http://www.adriencarpentier.com/post-verites/style/background_470x314.jpg';} ?>' />
 <meta property="og:image:width" content="470" />
 <meta property="og:image:height" content="314" />
+<meta property="fb:app_id" content="1542429205992863" />
 
 <link rel="apple-touch-icon" sizes="57x57" href="./style/favicons/apple-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="60x60" href="./style/favicons/apple-icon-60x60.png">

@@ -40,7 +40,7 @@
 	
 	<h3>Test de génération de rumeur de type ligne #<input type="number" name="sentence_id" value ="<?php echo $sentence_id ?>"/> :</h3>
 	<p><?php echo $sentence_string; ?><p/>
-
+	
 	<input type="submit" value="re-tester avec cette ligne">
 
 </form>  

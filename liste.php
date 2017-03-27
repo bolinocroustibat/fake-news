@@ -2,7 +2,9 @@
 <html lang="fr">
 
 <head>
-<?php include("header.php"); ?>
+<?php
+$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+include("header.php"); ?>
 </head>
 
 <body onload='$(".project-wrapper").css("visibility", "visible");'>
