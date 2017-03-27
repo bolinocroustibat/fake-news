@@ -22,7 +22,7 @@ class Sentence {
 		if (isset($this->all_sentences_struc_array[$this->sentence_id])){ // if the line exists (if the array structure exists)
 			$sentence_struc = $this->all_sentences_struc_array[$this->sentence_id]; // set the sentence structure 1-dimension array for this object
 			$this->sentence_struc = $sentence_struc; // update the sentence structure of this object
-			$sentence_string = $this->create_sentence($gid_table,$sentence_struc); // create sentence from sentence structure
+			$sentence_string = $this->create_sentence($gid_table,$sentence_struc, $person_array); // create sentence from sentence structure
 			$this->sentence_string = $this->correct_sentence($sentence_string);		
 		} else {
 			$this->sentence_struc = "ERREUR, CETTE STRUCTURE DE PHRASE N'EST PAS DEFINIE";
@@ -58,7 +58,7 @@ class Sentence {
 		return ($all_sentences_struc_array);
 	}
 	
-	private function create_sentence($gid_table,$sentence_struc, $person_array){
+	private function create_sentence($gid_table, $sentence_struc, $person_array){
 		$sentence_string='';
 		$i=0;
 		while (isset($sentence_struc[$i])) { // on éxécute la boucle tant qu'on n'a pas une cellule vide

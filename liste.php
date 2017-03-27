@@ -30,15 +30,17 @@ include("header.php"); ?>
 		<ul>
 			<?php		
 			$generated_projects_json = file_get_contents("generated_projects_FR.json"); //charge le fichier qui contient l'objet JSON
-			$generated_projects_table = array_reverse(json_decode($generated_projects_json,true)); // transforme l'objet JSON en tableau PHP, qu'on met à l'envers (chronologique)
+			$generated_projects_table = explode(';',$generated_projects_json);
 			$total_nb = count($generated_projects_table); //nb d'entrées dans le tableau
 			$nb=0;
-			foreach ($generated_projects_table as $row_obj) { // parcourt chaque ligne du tableau PHP
-				$row = json_decode($row_obj,true); // tranforme l'objet-ligne en tableau
-				$hash = $row["hash"];
-				$picture = $row["picture"];
-				$sentence = $row["sentence"];
-				echo ('<li>Rumeur n°'.($total_nb-$nb).' :<a href="'.$hash.'.html"><div class="project-wrapper"><img class="image" src="./photos/'.$picture.'"/><div class="project">'.$sentence.'</div><div class="site">adriencarpentier.com</div></a></li>');
+			foreach (array_reverse($generated_projects_table) as $obj) { // parcourt chaque ligne du tableau PHP dans l'order inverse
+				if (!empty($obj)) { // if the object is not empy
+					$row = json_decode($obj,true); // tranforme l'objet-ligne en tableau
+					$hash = $row["hash"];
+					$picture = $row["picture"];
+					$sentence = $row["sentence"];
+					echo ('<li>Rumeur n°'.($total_nb-$nb).' :<a href="'.$hash.'.html"><div class="project-wrapper"><img class="image" src="./photos/'.$picture.'"/><div class="project">'.$sentence.'</div><div class="site">adriencarpentier.com</div></a></li>');
+				}
 				$nb++;
 			}
 			?>
