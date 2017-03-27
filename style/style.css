@@ -1,6 +1,7 @@
 body{
-	background-image:url("background_1920x1080_opacite.jpg");
-	text-align:center;
+	background: url("background_1920x1080_opacite.jpg") no-repeat center center fixed; 
+	background-size: cover;
+	text-align: center;
 }
 
 body:after{

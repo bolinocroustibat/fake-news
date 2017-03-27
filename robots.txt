@@ -1,5 +1,6 @@
 User-agent: *
+Disallow: /.git/
 Disallow: /cache/
-Disallow: test.html
+Disallow: test.php
 Disallow: ajax_generate_FR.html
 Disallow: ajax_generate_FR.php
