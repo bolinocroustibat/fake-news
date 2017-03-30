@@ -14,7 +14,7 @@
 	include("class.word.php");
 	include("class.sentence.php");
 	if (isset($_GET['sentence_id'])) {
-		$sentence_min = $sentence_max = $_GET['sentence_id'];
+		$sentence_min = $sentence_max = addslashes($_GET['sentence_id']);
 	}
 	else {
 		$sentence_min = 5;

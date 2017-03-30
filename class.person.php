@@ -25,10 +25,10 @@ class Person {
 	}
 	
 	public function __construct() {
-		$this->person_array = $this->csv_choose_name_and_picture();
+		$this->person_array = $this->csvChooseNameAndPicture();
 	}
 	
-	private function csv_choose_name_and_picture() {
+	private function csvChooseNameAndPicture() {
 		static $words_array;
 		$cachefile = dirname(__FILE__)."/cache/csv_cache_PERSONNE.json";
 		$words_array = json_decode(file_get_contents($cachefile) ); // ...on récupère les données à partir du fichier de cache

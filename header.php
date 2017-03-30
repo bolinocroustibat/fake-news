@@ -17,26 +17,17 @@
 <meta property="og:image:height" content="314" />
 <meta property="fb:app_id" content="1542429205992863" />
 
-<link rel="apple-touch-icon" sizes="57x57" href="./style/favicons/apple-icon-57x57.png">
-<link rel="apple-touch-icon" sizes="60x60" href="./style/favicons/apple-icon-60x60.png">
-<link rel="apple-touch-icon" sizes="72x72" href="./style/favicons/apple-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="76x76" href="./style/favicons/apple-icon-76x76.png">
-<link rel="apple-touch-icon" sizes="114x114" href="./style/favicons/apple-icon-114x114.png">
-<link rel="apple-touch-icon" sizes="120x120" href="./style/favicons/apple-icon-120x120.png">
-<link rel="apple-touch-icon" sizes="144x144" href="./style/favicons/apple-icon-144x144.png">
-<link rel="apple-touch-icon" sizes="152x152" href="./style/favicons/apple-icon-152x152.png">
-<link rel="apple-touch-icon" sizes="180x180" href="./style/favicons/apple-icon-180x180.png">
-<link rel="icon" type="image/png" sizes="192x192"  href="./style/favicons/android-icon-192x192.png">
-<link rel="icon" type="image/png" sizes="32x32" href="./style/favicons/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="96x96" href="./style/favicons/favicon-96x96.png">
-<link rel="icon" type="image/png" sizes="16x16" href="./style/favicons/favicon-16x16.png">
-<link rel="manifest" href="./style/favicons/manifest.json">
-<meta name="msapplication-TileColor" content="#ffffff">
-<meta name="msapplication-TileImage" content="./style/favicons/ms-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="180x180" href="style/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="style/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="style/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="style/favicons/manifest.json">
+<link rel="mask-icon" href="style/favicons/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="style/favicons/favicon.ico">
+<meta name="msapplication-config" content="style/favicons/browserconfig.xml">
 <meta name="theme-color" content="#ffffff">
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" rel="stylesheet" type="text/css" media="all">
-<link href="./style/style.css" rel="stylesheet" type="text/css" media="all">
+<link href="style/normalize.css" rel="stylesheet" type="text/css" media="all">
+<link href="style/style.css" rel="stylesheet" type="text/css" media="all">
 
 <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet"> 
 

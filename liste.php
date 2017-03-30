@@ -4,7 +4,17 @@
 <head>
 <?php
 $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-include("header.php"); ?>
+include("header.php");
+
+if (!empty($_GET['page'])){
+	$page = $_GET['page'];
+	$first_char = (200000*$page)-200000;
+	$last_char = 200000*$page;
+} else {
+	$first_char = 0;
+	$last_char = 200000;
+}
+?>
 </head>
 
 <body onload='$(".project-wrapper").css("visibility", "visible");'>
@@ -26,10 +36,12 @@ include("header.php"); ?>
 		<h1>Le générateur de<div class="big_h1">post-vérités</div></h1>
 		
 		<h2>toutes les rumeurs</h2>
+		
+		<a href="liste.html?page=<?php echo ($page-1) ?>">page précédente</a> - <a href="liste.html?page=<?php echo ($page+1) ?>">page suivante</a>
 
 		<ul>
-			<?php		
-			$generated_projects_json = file_get_contents("generated_projects_FR.json"); //charge le fichier qui contient l'objet JSON
+			<?php
+			$generated_projects_json = file_get_contents("generated_projects_FR.json", NULL, NULL, $first_char, $last_char); //charge le fichier qui contient l'objet JSON
 			$generated_projects_table = explode(';',$generated_projects_json);
 			$total_nb = count($generated_projects_table); //nb d'entrées dans le tableau
 			$nb=0;

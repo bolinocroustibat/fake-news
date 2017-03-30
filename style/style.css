@@ -142,6 +142,7 @@ li a{
 
 
 #list-link {
+	visibility:hidden;
 	position:fixed; 
 	bottom: 30px; 
 	right:20px;
