@@ -2,21 +2,17 @@
 <html lang="fr">
 
 <?php
+
 $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 // RECUPERATION DES DONNEES EN CAS DE CHARGEMENT DE LA PAGE AVEC HASH
 if(isset($_GET['hash']) && $_GET['hash']!='') { // Si on recoit un hash
 	$hash = $_GET['hash'];
-	$generated_projects_json = file_get_contents("generated_projects_FR.json"); //charge le fichier qui contient l'objet JSON
-	$generated_projects_table = explode(';',$generated_projects_json);
-	foreach ($generated_projects_table as $obj){
-		$array = json_decode($obj,true);
-		if($hash == $array["hash"]){
-			$hash = $array["hash"];
-			$sentence = $array["sentence"];
-			$picture = $array["picture"];
-			break;
-		}
-	}
+	include("connex.php");	
+	$bdd = database_connect();
+	$req = $bdd->query("SELECT sentence,pic_filename FROM postverites WHERE hash='".$hash."'");
+	$rep = $req->fetchAll();
+	$sentence= $rep[0]['sentence'];
+	$picture= $rep[0]['pic_filename'];
 }
 ?>
 

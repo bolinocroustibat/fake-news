@@ -37,23 +37,41 @@ if (!empty($_GET['page'])){
 		
 		<h2>toutes les rumeurs</h2>
 		
-		<a href="liste.html?page=<?php echo ($page-1) ?>">page précédente</a> - <a href="liste.html?page=<?php echo ($page+1) ?>">page suivante</a>
-
+			<div id="pages">
+				<?php
+					// PAGINATION
+					include("connex.php");	
+					$bdd = database_connect();
+					$req = $bdd->query("SELECT COUNT(*) FROM postverites");
+					$rep = $req->fetch();
+					$total_news = $rep[0];
+					$nb_news_page = 20;
+					$total_pages = round($total_news / $nb_news_page, 0);
+					$page = 1;
+					if(!empty($_GET['page'])) {
+						$page = addslashes($_GET['page']);
+					}
+					// BOUTONS DE NAVIGATION
+					if ($page > 1) { echo '<a href="liste.html?page='.($page-1).'">rumeurs suivantes</a> - ';	}
+					if ($page < $total_pages) { echo '<a href="liste.html?page='.($page+1).'">rumeurs précédentes</a>';	}
+				?>
+			</div>
+		
+		
 		<ul>
 			<?php
-			$generated_projects_json = file_get_contents("generated_projects_FR.json", NULL, NULL, $first_char, $last_char); //charge le fichier qui contient l'objet JSON
-			$generated_projects_table = explode(';',$generated_projects_json);
-			$total_nb = count($generated_projects_table); //nb d'entrées dans le tableau
-			$nb=0;
-			foreach (array_reverse($generated_projects_table) as $obj) { // parcourt chaque ligne du tableau PHP dans l'order inverse
-				if (!empty($obj)) { // if the object is not empy
-					$row = json_decode($obj,true); // tranforme l'objet-ligne en tableau
-					$hash = $row["hash"];
-					$picture = $row["picture"];
-					$sentence = $row["sentence"];
-					echo ('<li>Rumeur n°'.($total_nb-$nb).' :<a href="'.$hash.'.html"><div class="project-wrapper"><img class="image" src="./photos/'.$picture.'"/><div class="project">'.$sentence.'</div><div class="site">adriencarpentier.com</div></a></li>');
+			// AFFICHAGE DES RUMEURS
+			$min = ($page-1)*$nb_news_page;
+			$req = $bdd->query("SELECT id,hash,sentence,pic_filename FROM postverites ORDER BY id DESC LIMIT $min,$nb_news_page");
+			$rep = $req->fetchAll();
+			foreach($rep as $key=>$obj) { // parcourt chaque ligne du tableau PHP dans l'ordre inverse
+				if (!empty($rep[$key])) {
+					$id= $rep[$key]['id'];
+					$hash= $rep[$key]['hash'];
+					$sentence= $rep[$key]['sentence'];
+					$picture= $rep[$key]['pic_filename'];
+					echo ('<li>Rumeur n°'.($id).' :<a href="'.$hash.'.html"><div class="project-wrapper"><img class="image" src="./photos/'.$picture.'"/><div class="project">'.$sentence.'</div><div class="site">adriencarpentier.com</div></a></li>');
 				}
-				$nb++;
 			}
 			?>
 		</ul>
