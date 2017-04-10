@@ -7,12 +7,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">	
 
 <meta property="og:locale" content="fr_FR">
-<meta property="og:site_name" content="Le générateur de post-vérités" />
+<meta property="og:site_name" content="Le générateur de fake news" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="<?php echo($actual_link);?>" />
-<meta property="og:title" content='<?php if(isset($sentence) && $sentence!=''){echo addslashes($sentence);}else{echo 'Le générateur de post-vérités';} ?>' />
+<meta property="og:title" content='<?php if(isset($sentence) && $sentence!=''){echo addslashes($sentence);}else{echo 'Le générateur de fake news';} ?>' />
 <meta property="og:description" content='<?php if(isset($sentence) && $sentence!=''){echo addslashes($sentence);}else{echo 'Engendrez des rumeurs foireuses d’extrême-droite !';} ?>' />
-<meta property="og:image" content='<?php if(isset($picture) && $picture!=''){echo 'http://www.adriencarpentier.com/post-verites/photos/'.$picture;}else{echo 'http://www.adriencarpentier.com/post-verites/style/background_470x314.jpg';} ?>' />
+<meta property="og:image" content='<?php if(isset($picture) && $picture!=''){echo 'http://adriencarpentier.com/post-verites/photos/'.$picture;}else{echo 'http://www.adriencarpentier.com/post-verites/style/background_470x314.jpg';} ?>' />
 <meta property="og:image:width" content="470" />
 <meta property="og:image:height" content="314" />
 <meta property="fb:app_id" content="1542429205992863" />

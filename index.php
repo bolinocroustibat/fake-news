@@ -9,7 +9,7 @@ if(isset($_GET['hash']) && $_GET['hash']!='') { // Si on recoit un hash
 	$hash = $_GET['hash'];
 	include("connex.php");	
 	$bdd = database_connect();
-	$req = $bdd->query("SELECT sentence,pic_filename FROM postverites WHERE hash='".$hash."'");
+	$req = $bdd->query("SELECT sentence,pic_filename FROM fakenews WHERE hash='".$hash."'");
 	$rep = $req->fetchAll();
 	$sentence= $rep[0]['sentence'];
 	$picture= $rep[0]['pic_filename'];
@@ -71,7 +71,7 @@ if(isset($_GET['hash']) && $_GET['hash']!='') { // Si on recoit un hash
 		
 	<div id="main-wrapper">
 
-		<h1>Le générateur de<span class="big_h1">post-vérités</span></h1>
+		<h1>Le générateur de<span class="big_h1">fake news</span></h1>
 
 		<input type="button" onClick="generate_data()" value="engendrer une rumeur foireuse">
 		<div class="project-wrapper" style="visibility:hidden;">
@@ -85,7 +85,9 @@ if(isset($_GET['hash']) && $_GET['hash']!='') { // Si on recoit un hash
 
 	</div>
 	
-	<a href="liste.html" id="list-link">toutes les rumeurs engendrées</a>
+	<div id="bottom-right-wrapper">
+		Suivez <a href="https://twitter.com/_RealFakeNews">@_RealFakeNews</a> sur Twitter
+	</div>
 
 </body>
 

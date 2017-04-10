@@ -8,6 +8,7 @@ body{
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
+	font-family: sans-serif;	
 	text-align: center;
 }
 
@@ -140,14 +141,16 @@ li a{
 	margin-left:30px;
 }
 
-
-#list-link {
-	visibility:hidden;
+#bottom-right-wrapper{
 	position:fixed; 
 	bottom: 30px; 
-	right:20px;
-	font-size:0.6em;
-	color:#EEE;
+	right:20px;	
+	color:#666;
+	font-size:0.9em;
+}
+
+#bottom-right-wrapper a{	
+	color:#666;
 }
 
 @media screen and (max-width:700px) {
