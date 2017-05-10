@@ -26,13 +26,16 @@ $hash = hash('md5',$sentence); // Génère le hash
 
 /* ENREGISTREMENT DANS LA BDD */
 $bdd = database_connect();
-$ip = $_SERVER["REMOTE_ADDR"];
+$ip = "";
+if (isset($_SERVER["REMOTE_ADDR"])){
+	$ip = $_SERVER["REMOTE_ADDR"];
+};
 $bdd->query('INSERT INTO fakenews (hash,sentence,pic_filename,ip) VALUES("'.$hash.'","'.$sentence.'","'.$person_pic_filename.'","'.$ip.'")');
 
 $tweet = $sentence.' adriencarpentier.com/post-verites/'.$hash.'.html';
 
 // require codebird
-require_once('./twitter-codebird/codebird.php');
+require_once(__DIR__.'/twitter-codebird/codebird.php');
 
 \Codebird\Codebird::setConsumerKey("xFj0rVXBGfRKAGgdzikcBkqBu", "SXa0ZYJ3XOEQFNhg39x8IXaxiQZnDiuZZuANpofUsOP4xeQMuM");
 $cb = \Codebird\Codebird::getInstance();

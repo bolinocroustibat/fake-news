@@ -3,17 +3,18 @@ html{
 }
 
 body{
-	background: url("background_1920x1080_opacite.jpg"); 
+	background: url("background_1920x1080_opacite.jpg");
 	background-size: cover;
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
-	font-family: sans-serif;	
+	font-family: Circular,Arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
 	text-align: center;
 }
 
 body:after{
-	content: "DEV !!";
+	content: "STAGING";
 	position: fixed;
 	width: 80px;
 	height: 25px;

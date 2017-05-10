@@ -33,7 +33,7 @@ if (!empty($_GET['page'])){
 	<div id="main-wrapper">
 
 		<!-- <h2>Plus aucune chance de voir le financement de son projet refusé, grâce à...</h2> -->
-		<h1>Le générateur de<div class="big_h1">post-vérités</div></h1>
+		<h1>Le générateur de<div class="big_h1">fake news</div></h1>
 		
 		<h2>toutes les rumeurs</h2>
 		

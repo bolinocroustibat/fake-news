@@ -1,6 +1,6 @@
 <meta charset="UTF-8" />
 
-<title>Le générateur de post-vérités</title>
+<title>Le générateur de fake news</title>
 
 <meta name="Description" content="<?php if(isset($sentence) && $sentence!=''){echo addslashes($sentence);}else{echo "Engendrez des rumeurs foireuses d'extrême-droite !";} ?>" />
 <meta name="Generator" content="Notepad++" />
@@ -12,7 +12,7 @@
 <meta property="og:url" content="<?php echo($actual_link);?>" />
 <meta property="og:title" content='<?php if(isset($sentence) && $sentence!=''){echo addslashes($sentence);}else{echo 'Le générateur de fake news';} ?>' />
 <meta property="og:description" content='<?php if(isset($sentence) && $sentence!=''){echo addslashes($sentence);}else{echo 'Engendrez des rumeurs foireuses d’extrême-droite !';} ?>' />
-<meta property="og:image" content='<?php if(isset($picture) && $picture!=''){echo 'http://adriencarpentier.com/post-verites/photos/'.$picture;}else{echo 'http://www.adriencarpentier.com/post-verites/style/background_470x314.jpg';} ?>' />
+<meta property="og:image" content='<?php if(isset($picture) && $picture!=''){echo 'http://adriencarpentier.com/fake-news/photos/'.$picture;}else{echo 'http://www.adriencarpentier.com/fake-news/style/background_470x314.jpg';} ?>' />
 <meta property="og:image:width" content="470" />
 <meta property="og:image:height" content="314" />
 <meta property="fb:app_id" content="1542429205992863" />

@@ -20,9 +20,12 @@
 		$sentence_min = 5;
 		$sentence_max = 67;
 	}
-	/* CREATION DE LA TABLE D'INDEX */
+	// CREATION DE LA TABLE D'INDEX ET DU CACHE S'IL N'EXISTE PAS
 	$gsheet = new GoogleSheet("https://docs.google.com/spreadsheets/d/1sVkvvJCLckEJslV4kS6io0Y9hGLELZnnJd87Kkejces/edit#gid=0");
 	$gid_table = $gsheet->getGidTable();
+	if (isset($_GET['refresh'])) { // Pour forcer le rafraîchissement du cache
+		$gsheet->BuildAllCache();
+	}
 	/* CREATION DU PERSONNAGE */
 	$person = new Person();
 	$person_array = $person->getPersonArray();
@@ -31,9 +34,6 @@
 	$sentence_obj = new Sentence($gid_table,"phrases",$person_array,$sentence_min,$sentence_max);
 	$sentence_id = $sentence_obj->getSentenceId();
 	$sentence_string = $sentence_obj->getSentenceString();
-	if (isset($_GET['refresh'])) { // Pour forcer le rafraîchissement du cache
-		$gsheet->BuildAllCache();
-	}
 	?>
 	
 	<hr/>
