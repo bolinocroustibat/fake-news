@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 include("class.googlesheet.php");
 include("class.person.php");
@@ -29,11 +29,11 @@ $ip = $_SERVER["REMOTE_ADDR"];
 $bdd->query('INSERT INTO fakenews (hash,sentence,pic_filename,ip) VALUES("'.$hash.'","'.$sentence.'","'.$person_pic_filename.'","'.$ip.'")');
 
 /* AFFCIHAGE SOUS FORME D'OBJET JSON POUR AJAX */
-$data = array(
+$data = [
 	'hash' => $hash,
 	'sentence' => $sentence,
 	'picture' => $person_pic_filename
-);
+];
 $jsonData = json_encode($data); // encode in a JSON object
 echo $jsonData;
 
