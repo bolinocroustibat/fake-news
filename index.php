@@ -36,7 +36,7 @@ if(isset($_GET['hash']) && $_GET['hash']!='') { // Si on recoit un hash
 						picture = dataObj.picture;
 						$(".image").attr("src","./photos/"+picture);
 						$(".project").html(sentence);
-						history.pushState(sentence, sentence, hash+'.html'); // change l'URL dynamiquement
+						history.replaceState(sentence, sentence, hash+'.html'); // change l'URL dynamiquement
 						if ((typeof sentence !== 'undefined') && (typeof hash !== 'undefined')) { // si les variables existent
 							document.getElementById('ShareFacebook').href = 'http://www.facebook.com/sharer/sharer.php?u='+window.location.href; // met à jour le lien de partage Facebook
 							document.getElementById('ShareTwitter').href = 'http://twitter.com/?status='+sentence+' adriencarpentier.com/fake-news/'+hash+'.html'; // met à jour le lien de partage Twitter
