@@ -73,7 +73,7 @@ if(isset($_GET['hash']) && $_GET['hash']!='') { // Si on recoit un hash
 		
 	<div id="main-wrapper">
 
-		<h1>Le générateur de<span class="big_h1">fake news</span></h1>
+		<h1>Le générateur de<span class="big_h1">fake news</span>d'extrême-droite</h1>
 
 		<input type="button" onClick="generate_data()" value="engendrer une rumeur foireuse">
 		<div class="project-wrapper" style="visibility:hidden;">
