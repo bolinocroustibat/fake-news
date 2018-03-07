@@ -13,7 +13,7 @@ body{
 	text-align: center;
 }
 
-body:after{
+/*body:after{
 	content: "STAGING";
 	position: fixed;
 	width: 80px;
@@ -30,7 +30,7 @@ body:after{
 	-ms-transform:rotate(-45deg);
 	-webkit-transform:rotate(-45deg);
 	transform:rotate(-45deg);
-}
+}*/
 
 h1{
 	display:inline-block;
