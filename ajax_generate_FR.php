@@ -24,9 +24,9 @@ $sentence = $sentence_obj->getSentenceString();
 $hash = hash('md5',$sentence); // Génère le hash
 
 /* ENREGISTREMENT DANS LA BDD */
-$bdd = database_connect();
+$db = db_connect();
 $ip = $_SERVER["REMOTE_ADDR"];
-$bdd->query('INSERT INTO fakenews (hash,sentence,pic_filename,ip) VALUES("'.$hash.'","'.$sentence.'","'.$person_pic_filename.'","'.$ip.'")');
+$db->query('INSERT INTO fakenews (hash,sentence,pic_filename,ip) VALUES("'.$hash.'","'.$sentence.'","'.$person_pic_filename.'","'.$ip.'")');
 
 /* AFFCIHAGE SOUS FORME D'OBJET JSON POUR AJAX */
 $data = [

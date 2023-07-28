@@ -8,8 +8,8 @@ $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 if(isset($_GET['hash']) && $_GET['hash']!='') { // Si on recoit un hash
 	$hash = $_GET['hash'];
 	include("connex.php");	
-	$bdd = database_connect();
-	$req = $bdd->query("SELECT sentence,pic_filename FROM fakenews WHERE hash='".$hash."'");
+	$db = db_connect();
+	$req = $db->query("SELECT sentence,pic_filename FROM fakenews WHERE hash='".$hash."'");
 	$rep = $req->fetchAll();
 	if ($rep) {
 		$sentence= $rep[0]['sentence'];

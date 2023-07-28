@@ -40,8 +40,8 @@ if (!empty($_GET['page'])){
 				<?php
 					// PAGINATION
 					include("connect.php");	
-					$bdd = database_connect();
-					$req = $bdd->query("SELECT COUNT(*) FROM fakenews");
+					$db = db_connect();
+					$req = $db->query("SELECT COUNT(*) FROM fakenews");
 					$rep = $req->fetch();
 					$total_news = $rep[0];
 					$nb_news_page = 500;
@@ -61,7 +61,7 @@ if (!empty($_GET['page'])){
 			<?php
 			// AFFICHAGE DES RUMEURS
 			$min = ($page-1)*$nb_news_page;
-			$req = $bdd->query("SELECT id,hash,sentence,pic_filename FROM fakenews ORDER BY id DESC LIMIT $min,$nb_news_page");
+			$req = $db->query("SELECT id,hash,sentence,pic_filename FROM fakenews ORDER BY id DESC LIMIT $min,$nb_news_page");
 			$rep = $req->fetchAll();
 			foreach($rep as $key=>$obj) { // parcourt chaque ligne du tableau PHP dans l'ordre inverse
 				if (!empty($rep[$key])) {
