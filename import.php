@@ -1,6 +1,6 @@
 <?php
 
-include("connect.php");	
+include("db/connect.php");	
 $db = db_connect();
 
 $generated_projects_json = file_get_contents("generated_projects_FR.json"); //charge le fichier qui contient l'objet JSON

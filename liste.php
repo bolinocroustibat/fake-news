@@ -39,7 +39,7 @@ if (!empty($_GET['page'])){
 			<div id="pages">
 				<?php
 					// PAGINATION
-					include("connect.php");	
+					include("db/connect.php");	
 					$db = db_connect();
 					$req = $db->query("SELECT COUNT(*) FROM fakenews");
 					$rep = $req->fetch();

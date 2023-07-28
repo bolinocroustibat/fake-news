@@ -7,7 +7,7 @@ include("class.person.php");
 include("class.word.php");
 include("class.sentence.php");
 
-include("connect.php");
+include("db/connect.php");
 
 /* CREATION DE LA TABLE D'INDEX */
 $gsheet = new GoogleSheet("https://docs.google.com/spreadsheets/d/1sVkvvJCLckEJslV4kS6io0Y9hGLELZnnJd87Kkejces/edit#gid=0");
