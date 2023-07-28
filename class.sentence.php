@@ -155,5 +155,3 @@ class Sentence {
 		return $string;
 	}
 }
-
-?>

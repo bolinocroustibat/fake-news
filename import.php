@@ -1,6 +1,6 @@
 <?php
 
-include("connex.php");	
+include("connect.php");	
 $bdd = database_connect();
 
 $generated_projects_json = file_get_contents("generated_projects_FR.json"); //charge le fichier qui contient l'objet JSON
@@ -13,7 +13,3 @@ foreach($generated_projects_table as $obj){
 	$person_pic_filename = $array["picture"];
 	$bdd->query('INSERT INTO fakenews (hash,sentence,pic_filename) VALUES("'.$hash.'","'.$sentence.'","'.$person_pic_filename.'")');
 }
-
-
-
-	

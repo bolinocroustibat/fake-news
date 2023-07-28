@@ -5,7 +5,7 @@ include("class.person.php");
 include("class.word.php");
 include("class.sentence.php");
 
-include("connex.php");
+include("connect.php");
 
 /* CREATION DE LA TABLE D'INDEX */
 include('googlesheet_url.php');

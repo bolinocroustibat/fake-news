@@ -14,7 +14,7 @@ class Word {
 			$this->word_string = $this->chooseRandomString($words_array); // launch the function for choosing a random line and put it in the property
 		}
 	}
-	
+
 	public function csvSingleColumnToArray($sheet_name) {
 		static $temp_table;
 		$cachefile = dirname(__FILE__)."/cache/csv_cache_".$sheet_name.".json";
@@ -27,7 +27,7 @@ class Word {
 		}
 		return ($words_array);
 	}
-	
+
 	private function chooseRandomString($words_array) {
 		$random_row = rand (0,count($words_array)-1);
 		$string = $words_array[$random_row];

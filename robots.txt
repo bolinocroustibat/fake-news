@@ -4,3 +4,4 @@ Disallow: /cache/
 Disallow: test.php
 Disallow: ajax_generate_FR.html
 Disallow: ajax_generate_FR.php
+Disallow: tweet-post.php
