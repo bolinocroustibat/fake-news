@@ -7,7 +7,7 @@ $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 // RECUPERATION DES DONNEES EN CAS DE CHARGEMENT DE LA PAGE AVEC HASH
 if(isset($_GET['hash']) && $_GET['hash']!='') { // Si on recoit un hash
 	$hash = $_GET['hash'];
-	include("connex.php");	
+	include("db/connect.php");	
 	$db = db_connect();
 	$req = $db->query("SELECT sentence,pic_filename FROM fakenews WHERE hash='".$hash."'");
 	$rep = $req->fetchAll();
