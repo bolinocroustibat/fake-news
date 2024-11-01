@@ -5,9 +5,18 @@
 - php >= 8
 - SQlite3
 
-## Importer l'ancien fichier JSON des projest générés dans la base SQLite
+## Mettre à jour les fichiers de cahe JSON depuis le Google Sheet
+
+Naviguer sur `/test.php?refresh` pour forcer la mise à jour des fichiers JSON
+
+ou
 
 ```php
-php import.php
+php import_to_json.php
 ```
 
+## Importer l'ancien fichier JSON des projets générés dans la base SQLite
+
+```php
+php import_to_sql.php
+```
