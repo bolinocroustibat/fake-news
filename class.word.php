@@ -12,7 +12,7 @@ class Word
 
 	public function __construct($db, string $table_name)
 	{
-		$req = $db->query('SELECT * FROM ' . $table_name . ' ORDER BY RAND() LIMIT 1');
-		$this->chosen_row = $req->fetchrow();
+		$req = $db->query('SELECT * FROM `' . $table_name . '` ORDER BY RANDOM() LIMIT 1');
+		$this->chosen_row = $req->fetch();
 	}
 }

@@ -16,16 +16,16 @@ class Sentence
 		if (($min_line === NULL) && ($max_line === NULL)) {
 			// If there is no specific sentence range ID wanted...
 			// ...choose a random row from the DB
-			$req = $db->query('SELECT * FROM phrases ORDER BY RAND() LIMIT 1');
-			$res = $req->fetchrow();
+			$req = $db->query('SELECT * FROM phrases ORDER BY RANDOM() LIMIT 1');
+			$res = $req->fetch();
 		} else {
-			$req = $db->query('SELECT * FROM phrases WHERE id BETWEEN ' . $min_line . ' AND ' . $max_line . ' ORDER BY RAND() LIMIT 1');
-			$res = $req->fetchrow();
+			$req = $db->query('SELECT * FROM phrases WHERE id BETWEEN ' . $min_line . ' AND ' . $max_line . ' ORDER BY RANDOM() LIMIT 1');
+			$res = $req->fetch();
 		}
 		if ($res) {
 			$this->sentence_id = $res[0];
-			$sentence_string = $this->create($res, $person);
-			$this->sentence_string = $this->correct($sentence_string, $person->getGender());
+			$sentence_string = $this->create($res);
+			$this->sentence_string = $this->correct($sentence_string);
 		} else {
 			$this->sentence_id = "ERREUR, CETTE STRUCTURE DE PHRASE N'EST PAS DEFINIE";
 			$this->sentence_string = "ERREUR, CETTE STRUCTURE DE PHRASE N'EST PAS DEFINIE";
@@ -42,14 +42,14 @@ class Sentence
 		return $this->sentence_string;
 	}
 
-	private function create(string $sentence_struc): string
+	private function create(array $sentence_struc): string
 	{
 		// Get all tables names
-		$req = $this->db->query('SHOW TABLES');
+		$req = $this->db->query('SELECT col0 FROM table_names');
 		$res = $req->fetchAll();
 		$table_names = array();
 		foreach ($res as $table) {
-			$table_names[] = $res[0];
+			$table_names[] = $table[0];
 		}
 
 		$sentence_string = '';
@@ -84,7 +84,7 @@ class Sentence
 		return $sentence_string;
 	}
 
-	private function correct(string $sentence_string, string $gender): string
+	private function correct(string $sentence_string): string
 	{
 		// Strip spaces at the beginning and end of the sentence
 		$sentence_string = trim($sentence_string);
@@ -96,7 +96,7 @@ class Sentence
 		$sentence_string = preg_replace('/\s([.,)])/u', '$1', $sentence_string);
 
 		// Remove spaces after punctuation
-		$sentence_string = preg_replace('/([(.])\s/u', '$1', $sentence_string);
+		$sentence_string = preg_replace('/([(])\s/u', '$1', $sentence_string);
 
 		$correction_array = array(
 			" à le " => " au ",
@@ -123,13 +123,17 @@ class Sentence
 			" son les " => " ses ",
 		);
 
-		if ($gender == "f") {
+		if ($this->person->getGender() == "f") {
 			$correction_array = array_merge($correction_array, array(
 				" il " => " elle ",
 				" Il " => " Elle ",
 				"qu’il " => "qu'elle ",
 				"l’intéressé " => " l’intéressée ",
 				" impliqué " => " impliquée ",
+				" concerné " => " concernée ",
+				" soupçonné " => " soupçonnée ",
+				" suspecté " => " suspectée ",
+				" soutenu " => " soutenue ",
 				"cocu" => "cocue",
 			));
 		}
@@ -138,16 +142,16 @@ class Sentence
 		$sentence_string = strtr($sentence_string, $correction_array);
 
 		// Handle replacements involving vowels
-		$sentence_string = preg_replace_callback('/\b(de|que|la|le) ([aâeêéèhiîoôuyAÂEÊÉÈHIÎOUY])/', function ($matches) {
-			return $matches[1] . '’' . $matches[2];
+		$sentence_string = preg_replace_callback('/\b(de|que|la|le) ([aâeêéèiîoôuyAÂEÊÉÈIÎOUY])/', function ($matches) {
+			return substr($matches[1], 0, -1) . '’' . $matches[2];
 		}, $sentence_string);
 
 		// Uppercase the first char
-		if (in_array(substr($sentence_string, 0, 1), ['“', '"'])) {
+		if (in_array(substr($sentence_string, 0, 3), ['“', '"'])) {
 			// Uppercase the second char, if the first char is a double quote
-			$second_char = substr($sentence_string, 1, 1); // Get the second char
+			$second_char = substr($sentence_string, 3, 1); // Get the second char
 			$second_char_caps = $this->frenchUcfirst($second_char); // Uppercase
-			$sentence_string = substr_replace($sentence_string, $second_char_caps, 1, 1); // replace the second char
+			$sentence_string = substr_replace($sentence_string, $second_char_caps, 3, 1); // replace the second char
 		} else {
 			$sentence_string = $this->frenchUcfirst($sentence_string);
 		}

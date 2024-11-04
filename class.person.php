@@ -7,8 +7,8 @@ class Person
 
 	public function __construct($db)
 	{
-		$req = $db->query('SELECT * FROM person ORDER BY RAND() LIMIT 1');
-		$this->person_array = $req->fetchrow();
+		$req = $db->query('SELECT * FROM PERSONNE ORDER BY RANDOM() LIMIT 1');
+		$this->person_array = $req->fetch();
 	}
 
 	public function getArray(): array

@@ -24,7 +24,13 @@ $hash = hash('md5', $sentence_string);
 
 // Save in the DB
 $ip = $_SERVER["REMOTE_ADDR"];
-$db->query('INSERT INTO generated (hash,sentence,pic_filename,ip) VALUES("' . $hash . '","' . $sentence_string . '","' . $person_pic_filename . '","' . $ip . '")');
+$req = $db->prepare('INSERT INTO generated (hash, sentence, pic_filename, ip) VALUES (:hash, :sentence, :pic_filename, :ip)');
+$req->execute([
+	':hash' => $hash,
+	':sentence' => $sentence_string,
+	':pic_filename' => $person_pic_filename,
+	':ip' => $ip
+]);
 
 // Display as JSON
 echo json_encode([
