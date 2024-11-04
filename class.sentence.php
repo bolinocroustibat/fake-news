@@ -92,17 +92,6 @@ class Sentence
 			" ," => ",",
 			" à le " => " au ",
 			" à les " => " aux ",
-			" de a" => " d’a",
-			" de e" => " d’e",
-			" de ê" => " d’ê",
-			" de é" => " d’é",
-			" de è" => " d’è",
-			" de h" => " d’h",
-			" de i" => " d’i",
-			" de u" => " d’u",
-			" de A" => " d’A",
-			" de E" => " d’E",
-			" de I" => " d’I",
 			" de de " => " de ",
 			" de des " => " des ",
 			" de le " => " du ",
@@ -110,18 +99,6 @@ class Sentence
 			" en la " => " en ",
 			" en le " => " en ",
 			" en les " => " en ",
-			" la A" => " l’A",
-			" la E" => " l’E",
-			" la É" => " l’É",
-			" la I" => " l’I",
-			" la O" => " l’O",
-			" la U" => " l’U",
-			" le A" => " l’A",
-			" le E" => " l’E",
-			" le É" => " l’É",
-			" le I" => " l’I",
-			" le O" => " l’O",
-			" le U" => " l’U",
 			" le la " => " la ",
 			" le le " => " le ",
 			" le les " => " les ",
@@ -135,37 +112,37 @@ class Sentence
 			" son l'" => " son ",
 			" son l’" => " son ",
 			" son les " => " ses ",
-			" que a" => " qu’a",
-			" que e" => " qu’e",
-			" que i" => " qu’i",
-			" que u" => " qu’u",
-			" que A" => " qu’A",
-			" que E" => " qu’E",
-			" que I" => " qu’I",
-			" que U" => " qu’U",
 		);
+
 		if ($gender == "f") {
 			$correction_array = array_merge($correction_array, array(
 				" il " => " elle ",
 				" Il " => " Elle ",
-				" il " => " elle ",
 				"qu’il " => "qu'elle ",
-				" né " => " née ",
-				"Né " => "Née ",
-				"iplômé " => "iplômée ",
-				"marqué " => "marquée ",
-				"obsédé " => "obsédée ",
 				"l’intéressé " => " l’intéressée ",
+				" impliqué " => " impliquée ",
+				"cocu" => "cocue",
 			));
 		}
+
+		// Apply replacements
 		$sentence_string = strtr($sentence_string, $correction_array);
-		if (substr($sentence_string, 0, 3) == '“' || substr($sentence_string, 0, 3) == '"') { // Uppercase the second char, if the first char is a double quote
+
+		// Handle replacements involving vowels
+		$sentence_string = preg_replace_callback('/\b(de|que|la|le) ([aâeêéèhiîoôuyAÂEÊÉÈHIÎOUY])/', function ($matches) {
+			return $matches[1] . '’' . $matches[2];
+		}, $sentence_string);
+
+		// Uppercase the first char
+		if (substr($sentence_string, 0, 3) == '“' || substr($sentence_string, 0, 3) == '"') {
+			// Uppercase the second char, if the first char is a double quote
 			$second_char = substr($sentence_string, 3, 1); // Get the second char
 			$second_char_caps = $this->frenchUcfirst($second_char); // Uppercase
 			$sentence_string = substr_replace($sentence_string, $second_char_caps, 3, 1); // replace the second char
 		} else {
 			$sentence_string = $this->frenchUcfirst($sentence_string);
 		}
+
 		return $sentence_string;
 	}
 
