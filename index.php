@@ -9,7 +9,7 @@ if(isset($_GET['hash']) && $_GET['hash']!='') { // Si on recoit un hash
 	$hash = $_GET['hash'];
 	include("db/connect.php");	
 	$db = db_connect();
-	$req = $db->query("SELECT sentence,pic_filename FROM fakenews WHERE hash='".$hash."'");
+	$req = $db->query("SELECT sentence,pic_filename FROM generated WHERE hash='".$hash."'");
 	$rep = $req->fetchAll();
 	if ($rep) {
 		$sentence= $rep[0]['sentence'];

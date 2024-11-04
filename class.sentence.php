@@ -86,10 +86,19 @@ class Sentence
 
 	private function correct(string $sentence_string, string $gender): string
 	{
+		// Strip spaces at the beginning and end of the sentence
+		$sentence_string = trim($sentence_string);
+
+		// Replace multiple spaces by a single space
+		$sentence_string = preg_replace('/\s+/', ' ', $sentence_string);
+
+		// Remove spaces before punctuation
+		$sentence_string = preg_replace('/\s([.,)])/u', '$1', $sentence_string);
+
+		// Remove spaces after punctuation
+		$sentence_string = preg_replace('/([(.])\s/u', '$1', $sentence_string);
+
 		$correction_array = array(
-			"( " => "(",
-			" )" => ")",
-			" ," => ",",
 			" à le " => " au ",
 			" à les " => " aux ",
 			" de de " => " de ",
@@ -134,11 +143,11 @@ class Sentence
 		}, $sentence_string);
 
 		// Uppercase the first char
-		if (substr($sentence_string, 0, 3) == '“' || substr($sentence_string, 0, 3) == '"') {
+		if (in_array(substr($sentence_string, 0, 1), ['“', '"'])) {
 			// Uppercase the second char, if the first char is a double quote
-			$second_char = substr($sentence_string, 3, 1); // Get the second char
+			$second_char = substr($sentence_string, 1, 1); // Get the second char
 			$second_char_caps = $this->frenchUcfirst($second_char); // Uppercase
-			$sentence_string = substr_replace($sentence_string, $second_char_caps, 3, 1); // replace the second char
+			$sentence_string = substr_replace($sentence_string, $second_char_caps, 1, 1); // replace the second char
 		} else {
 			$sentence_string = $this->frenchUcfirst($sentence_string);
 		}

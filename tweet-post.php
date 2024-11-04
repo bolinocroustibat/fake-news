@@ -26,7 +26,7 @@ $hash = hash('md5', $sentence_string);
 
 // Save in the DB
 $ip = $_SERVER["REMOTE_ADDR"];
-$db->query('INSERT INTO fakenews (hash,sentence,pic_filename,ip) VALUES("' . $hash . '","' . $sentence_string . '","' . $person_pic_filename . '","' . $ip . '")');
+$db->query('INSERT INTO generated (hash,sentence,pic_filename,ip) VALUES("' . $hash . '","' . $sentence_string . '","' . $person_pic_filename . '","' . $ip . '")');
 
 $tweet = $sentence_string . ' adriencarpentier.com/post-verites/' . $hash . '.html';
 

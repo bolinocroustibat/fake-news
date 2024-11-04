@@ -11,5 +11,5 @@ foreach($generated_projects_table as $obj){
 	$hash = $array["hash"];
 	$sentence = $array["sentence"];
 	$person_pic_filename = $array["picture"];
-	$db->query('INSERT INTO fakenews (hash,sentence,pic_filename) VALUES("'.$hash.'","'.$sentence.'","'.$person_pic_filename.'")');
+	$db->query('INSERT INTO generated (hash,sentence,pic_filename) VALUES("'.$hash.'","'.$sentence.'","'.$person_pic_filename.'")');
 }
