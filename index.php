@@ -28,7 +28,7 @@ if(isset($_GET['hash']) && $_GET['hash']!='') { // Si on recoit un hash
 			$(".image").hide("fade", function() { // when the image is also hidden, launch the ajax call
 				$.ajax({
 					type: "POST",		
-					url: 'ajax_generate_FR.php',
+					url: 'generate.php',
 					success: function (data) {
 						var dataObj = jQuery.parseJSON(data);
 						hash = dataObj.hash;
