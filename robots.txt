@@ -1,6 +1,5 @@
 User-agent: *
 Disallow: /.git/
-Disallow: /cache/
 Disallow: test.php
 Disallow: generate.html
 Disallow: generate.php
