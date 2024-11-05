@@ -10,10 +10,6 @@ include("class.sentence.php");
 include("db/connect.php");
 $db = db_connect();
 
-// Build the DB tables from Google Sheet
-include('googlesheet_url.php');
-$gsheet = new GoogleSheet($db, $googleSheetUrl);
-
 // Create the character
 $person = new Person($db);
 $person_pic_filename = $person->getPicture();
@@ -39,9 +35,9 @@ $tweet = $sentence_string . ' adriencarpentier.com/post-verites/' . $hash . '.ht
 // require codebird
 require_once(__DIR__ . '/twitter-codebird/codebird.php');
 
-\Codebird\Codebird::setConsumerKey("xFj0rVXBGfRKAGgdzikcBkqBu", "SXa0ZYJ3XOEQFNhg39x8IXaxiQZnDiuZZuANpofUsOP4xeQMuM");
+\Codebird\Codebird::setConsumerKey($ini['twitter_consumer_key'], $ini['twitter_consumer_secret']);
 $cb = \Codebird\Codebird::getInstance();
-$cb->setToken("851065918511820800-SL1hzD90KSvxE9do5AczJIEEiCKOe2E", "Y6szmw7p2u1lTLIKOYB9hsID6MfRW2kqHSwLehrSC0iGv");
+$cb->setToken($ini['twitter_access_token'], $ini['twitter_access_token_secret']);
 
 $params = array('status' => $tweet);
 $reply = $cb->statuses_update($params);

@@ -7,22 +7,26 @@
 
 <body>
 
-	<form action="test.php" method="get">
+	<form action="test.php" method="GET">
 
 		<?php
 		include("class.googlesheet.php");
 		include("class.person.php");
 		include("class.word.php");
 		include("class.sentence.php");
+
 		if (isset($_GET['sentence_id'])) {
 			$sentence_min = $sentence_max = addslashes($_GET['sentence_id']);
 		} else {
 			$sentence_min = 5;
 			$sentence_max = 67;
 		}
+
+		// Read .ini file
+		$ini = parse_ini_file('config.ini');
+	
 		// Build the DB tables from Google Sheet
-		include('googlesheet_url.php');
-		$gsheet = new GoogleSheet($db, $googleSheetUrl);
+		$gsheet = new GoogleSheet($db, $ini['google_sheet_url']);
 
 		// Force the refresh of the tables
 		if (isset($_GET['refresh'])) {

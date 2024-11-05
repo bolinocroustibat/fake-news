@@ -8,10 +8,6 @@ include("class.sentence.php");
 include("db/connect.php");
 $db = db_connect();
 
-// Build the DB tables from Google Sheet
-include('googlesheet_url.php');
-$gsheet = new GoogleSheet($db, $googleSheetUrl);
-
 // Create the character
 $person = new Person($db);
 $person_pic_filename = $person->getPicture();

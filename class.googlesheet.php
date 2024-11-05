@@ -82,8 +82,6 @@ class GoogleSheet
 			}
 
 			echo ("DB table '" . $table_name . "' (re)-created from Google Sheet\n");
-
 		}
 	}
-
 }
