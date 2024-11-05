@@ -5,7 +5,7 @@ class Person
 
 	private $person_array; // Array with person name string and picture
 
-	public function __construct($db)
+	public function __construct(PDO $db)
 	{
 		$req = $db->query('SELECT * FROM PERSONNE ORDER BY RANDOM() LIMIT 1');
 		$this->person_array = $req->fetch();

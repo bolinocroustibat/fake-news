@@ -12,7 +12,7 @@ class GoogleSheet
 		return $this->sheet_id;
 	}
 
-	public function __construct($db, string $sheet_url)
+	public function __construct(PDO $db, string $sheet_url)
 	{
 		$this->db = $db;
 		$this->sheet_url = $sheet_url;

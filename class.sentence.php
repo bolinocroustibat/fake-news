@@ -8,7 +8,7 @@ class Sentence
 	private $sentence_id;
 	private $sentence_string;
 
-	public function __construct($db, Person $person, int $min_line = NULL, int $max_line = NULL)
+	public function __construct(PDO $db, Person $person, int $min_line = NULL, int $max_line = NULL)
 	{
 		$this->db = $db;
 		$this->person = $person;
