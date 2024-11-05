@@ -34,7 +34,7 @@
 		$person_pic_filename = $person->getPicture();
 
 		// Create the fake news sentence
-		$sentence = new Sentence($db, "phrases", $person, $sentence_min, $sentence_max);
+		$sentence = new Sentence($db, $person, $sentence_min, $sentence_max);
 		$sentence_id = $sentence->getId();
 		$sentence_string = $sentence->getString();
 		?>

@@ -19,7 +19,7 @@ $person = new Person($db);
 $person_pic_filename = $person->getPicture();
 
 // Create the sentence
-$sentence = new Sentence($db, "phrases", $person);
+$sentence = new Sentence($db, $person);
 $sentence_string = $sentence->getString();
 
 $hash = hash('md5', $sentence_string);

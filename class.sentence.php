@@ -48,8 +48,8 @@ class Sentence
 		$req = $this->db->query('SELECT col0 FROM table_names');
 		$res = $req->fetchAll();
 		$table_names = array();
-		foreach ($res as $table) {
-			$table_names[] = $table[0];
+		foreach ($res as $row) {
+			$table_names[] = $row[0];
 		}
 
 		$sentence_string = '';
